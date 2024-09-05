@@ -1,0 +1,60 @@
+{
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@9.8.0",
+  "scripts": {
+    "build": "nuxi build",
+    "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
+    "dev": "nuxi dev",
+    "generate": "nuxi generate",
+    "prepare": "nuxi prepare",
+    "start": "node .output/server/index.mjs",
+    "start:generate": "npx serve .output/public",
+    "lint": "eslint .",
+    "typecheck": "vue-tsc --noEmit",
+    "publish": "pnpm run generate && pnpm run start:generate"
+  },
+  "dependencies": {
+    "@alova/adapter-axios": "^2.0.7",
+    "@alova/mock": "^2.0.6",
+    "@types/lodash-es": "^4.17.12",
+    "alova": "^3.0.16",
+    "axios": "^1.7.7",
+    "countup.js": "^2.8.0",
+    "date-fns": "^3.6.0",
+    "echarts": "^5.5.1",
+    "lodash-es": "^4.17.21",
+    "nuxt-vite-legacy": "^1.2.0",
+    "vue-echarts": "^7.0.3",
+    "vue3-lottie": "^3.3.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.27.1",
+    "@element-plus/nuxt": "^1.0.10",
+    "@iconify-json/carbon": "^1.1.37",
+    "@iconify-json/twemoji": "^1.1.16",
+    "@nuxt/devtools": "^1.4.0",
+    "@nuxt/eslint": "^0.5.2",
+    "@nuxtjs/color-mode": "^3.4.4",
+    "@pinia/nuxt": "^0.5.4",
+    "@types/mockjs": "^1.0.10",
+    "@unocss/eslint-config": "^0.62.3",
+    "@unocss/nuxt": "^0.62.3",
+    "@vite-pwa/nuxt": "^0.10.1",
+    "@vueuse/nuxt": "^11.0.3",
+    "arco-design-nuxt-module": "^0.1.0",
+    "consola": "^3.2.3",
+    "dayjs-nuxt": "^2.1.11",
+    "eslint": "^9.9.1",
+    "eslint-plugin-format": "^0.1.2",
+    "mockjs": "^1.1.0",
+    "nuxt": "^3.13.0",
+    "pinia": "^2.2.2",
+    "sass": "^1.78.0",
+    "typescript": "^5.5.4",
+    "vue-tsc": "^2.0.29"
+  },
+  "resolutions": {
+    "@typescript-eslint/utils": "^8.2.0"
+  }
+}
