@@ -17,7 +17,7 @@ function onNavigationTo() {
       </template>
       <template v-else>
         <div class="w-full flex justify-center">
-          <user-info name="杨帆" />
+          <user-info name="suk.bear" />
           <user-info name="张三" />
           <user-info name="李四" />
         </div>

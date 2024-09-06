@@ -38,7 +38,7 @@ onUnmounted(() => {
           </el-button>
           <div class="nav-bar_right_group ml-4 flex items-center">
             <div>小组成员：</div>
-            <user-info name="杨帆" :size="30" :show-label="false" />
+            <user-info name="suk.bear" :size="30" :show-label="false" />
             <user-info name="张三" :size="30" :show-label="false" />
             <user-info name="李四" :size="30" :show-label="false" />
           </div>
