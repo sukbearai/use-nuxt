@@ -2,6 +2,8 @@
 import { h, onMounted, ref } from 'vue'
 import PopupMessage from './popup-message.vue'
 
+const { $myObject } = useNuxtApp()
+
 const msgVNode = h(PopupMessage, { name: '👏👏👏' }, {
   default: () => [
     h('div', '签到成功'),
@@ -11,9 +13,10 @@ const msgVNode = h(PopupMessage, { name: '👏👏👏' }, {
 const containerRef = ref<HTMLCanvasElement | null>(null)
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
-onMounted(() => {
+onMounted(async () => {
   loadSequenceFrame()
-//  window.addEventListener("resize", drawSequenceFrameOnResize);
+  //  window.addEventListener("resize", drawSequenceFrameOnResize);
+  window.console.log($myObject, '获取的qt对象')
 })
 
 function loadSequenceFrame() {

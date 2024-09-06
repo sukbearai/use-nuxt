@@ -95,7 +95,7 @@ const mockAdapter = createAlovaMockAdapter([mocks], {
 // alova instance
 export const alovaInst = createAlova({
   statesHook: VueHook,
-  requestAdapter: import.meta.dev
+  requestAdapter: true
     ? mockAdapter
     : axiosRequestAdapter({
       axios: netWork,
