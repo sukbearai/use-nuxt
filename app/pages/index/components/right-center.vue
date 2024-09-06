@@ -8,7 +8,7 @@ const config = ref({
 const data = ref([])
 function getData() {
   ranking()
-    .then((res) => {
+    .then((res: any) => {
       if (res.data.success) {
         data.value = res.data.data
       }

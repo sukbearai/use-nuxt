@@ -10,7 +10,7 @@ const state = reactive({
 })
 
 function getData() {
-  countDeviceNum().then((res) => {
+  countDeviceNum().then((res: any) => {
     if (res.data.success) {
       state.alarmNum = res.data.data.alarmNum
       state.offlineNum = res.data.data.offlineNum

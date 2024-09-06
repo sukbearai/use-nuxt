@@ -9,6 +9,7 @@ export default {
       default: false,
     },
   },
+  emits: ['send', 'emojiTypeChange'],
   data() {
     return {
       msg: '',

@@ -16,7 +16,7 @@ const state = reactive<any>({
 
 function getData() {
   rightBottom({ limitNum: 20 })
-    .then((res) => {
+    .then((res: any) => {
       if (res.data.success) {
         state.list = res.data.data.list
       }
@@ -53,7 +53,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="right_bottom_wrap beautify-scroll-def" :class="{ 'overflow-y-auto': !indexConfig.rightBottomSwiper }">
+  <div class="beautify-scroll-def right_bottom_wrap" :class="{ 'overflow-y-auto': !indexConfig.rightBottomSwiper }">
     <component
       :is="comName"
       v-model="state.scroll"

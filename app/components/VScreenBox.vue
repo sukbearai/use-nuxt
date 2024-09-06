@@ -1,3 +1,4 @@
+<!-- eslint-disable ts/no-unused-expressions -->
 <script lang="ts" setup>
 import { nextTick, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 import type { CSSProperties, PropType } from 'vue'
@@ -32,28 +33,6 @@ const props = defineProps({
     default: () => ({}),
   },
 })
-
-/**
- * 防抖函数
- * @param {Function} fn
- * @param {number} delay
- * @returns {() => void}
- */
-function debounce(fn: Function, delay: number): () => void {
-  // let timer: NodeJS.Timer;
-  let timer: any
-  return function (...args: any[]): void {
-    if (timer)
-      clearTimeout(timer)
-    timer = setTimeout(
-      () => {
-        typeof fn === 'function' && fn.apply(null, args)
-        clearTimeout(timer)
-      },
-      delay > 0 ? delay : 100,
-    )
-  }
-}
 
 interface IState {
   originalWidth: string | number
@@ -98,17 +77,19 @@ const styles: Record<string, CSSProperties> = {
 const screenWrapper = ref<HTMLElement>()
 const box = ref<HTMLElement>()
 
-const onResize = debounce(async () => {
+async function onResize() {
   await initSize()
   updateSize()
   updateScale()
-}, props.delay)
+}
+
+const debounceOnResize = useDebounceFn(onResize, props.delay)
 
 watch(
   () => props.autoScale,
   async (newVal: any) => {
     if (newVal) {
-      onResize()
+      debounceOnResize()
       addListener()
     }
     else {
@@ -201,24 +182,24 @@ function updateScale() {
   autoScale(scale)
 }
 
-function initMutationObserver() {
-  const observer = (state.observer = new MutationObserver(() => {
-    onResize()
-  }))
-  observer.observe(screenWrapper.value!, {
-    attributes: true,
-    attributeFilter: ['style'],
-    attributeOldValue: true,
-  })
-}
+// function initMutationObserver() {
+//   const observer = (state.observer = new MutationObserver(() => {
+//     debounceOnResize()
+//   }))
+//   observer.observe(screenWrapper.value!, {
+//     attributes: true,
+//     attributeFilter: ['style'],
+//     attributeOldValue: true,
+//   })
+// }
 
 function clearListener() {
-  window.removeEventListener('resize', onResize)
+  window.removeEventListener('resize', debounceOnResize)
   // state.observer?.disconnect();
 }
 
 function addListener() {
-  window.addEventListener('resize', onResize)
+  window.addEventListener('resize', debounceOnResize)
   // initMutationObserver();
 }
 onMounted(() => {

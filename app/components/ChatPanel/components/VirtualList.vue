@@ -10,7 +10,7 @@ const props = defineProps({
     default: 200,
   },
   data: {
-    type: Array,
+    type: Array<any>,
     default: () => [],
   },
   threshold: {

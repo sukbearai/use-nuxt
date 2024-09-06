@@ -23,11 +23,11 @@ definePageMeta({
       <VItemWrap class="contetn_left-top contetn_lr-item" title="设备总览">
         <LeftTop />
       </VItemWrap>
-      <VItemWrap class="contetn_left-center contetn_lr-item" title="用户总览">
+      <VItemWrap class="contetn_lr-item contetn_left-center" title="用户总览">
         <LeftCenter />
       </VItemWrap>
       <VItemWrap
-        class="contetn_left-bottom contetn_lr-item"
+        class="contetn_lr-item contetn_left-bottom"
         title="设备提醒"
         style="padding: 0 10px 16px 10px"
       >

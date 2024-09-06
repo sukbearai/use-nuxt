@@ -60,9 +60,9 @@ function _queryList(
     return _callQueryResult([])
   }
   if (showLog) {
-    console.log('%c\n----------请求开始--------', 'color:green;')
-    console.info(`请求参数：【pageNo:${pageNo},pageSize:${pageSize}】`)
-    console.log('%c----------请求结束--------\n', 'color:green;')
+    window.console.log('%c\n----------请求开始--------', 'color:green;')
+    window.console.info(`请求参数：【pageNo:${pageNo},pageSize:${pageSize}】`)
+    window.console.log('%c----------请求结束--------\n', 'color:green;')
   }
   // console.log('加载中...')
   if (pageNo === 0) {
@@ -76,7 +76,7 @@ function _queryList(
         detail: `测试信息${type}`,
       }
       if (showNews) {
-        item.detail = getNews(random)
+        item.detail = getNews(random)!
       }
       totalPagingList.push(item)
     }
@@ -109,15 +109,15 @@ function _callQueryResult(arg: any) {
     setTimeout(() => {
       // uni.hideLoading()
       if (showLog) {
-        console.log('%c\n----------响应开始--------', 'color:#0113fa;')
+        window.console.log('%c\n----------响应开始--------', 'color:#0113fa;')
         // #ifdef H5
-        console.table(arg)
+        window.console.table(arg)
         // #endif
 
         // #ifndef H5
-        console.log(arg)
+        window.console.log(arg)
         // #endif
-        console.log('%c----------响应结束--------\n', 'color:#0113fa;')
+        window.console.log('%c----------响应结束--------\n', 'color:#0113fa;')
       }
       resolve({
         data: {

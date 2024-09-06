@@ -129,6 +129,7 @@ const contentCls = computed(() => [
 ])
 
 // 优化Cumulative Layout Shift, CLS
+// eslint-disable-next-line vue/return-in-computed-property
 const emptyStyle = computed(() => {
   if (props.virtualListProps?.height) {
     return {

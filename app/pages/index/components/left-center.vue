@@ -13,12 +13,12 @@ const state = reactive({
 })
 function echartsGraphic(colors: string[]) {
   return new graphic.LinearGradient(1, 0, 0, 0, [
-    { offset: 0, color: colors[0] },
-    { offset: 1, color: colors[1] },
+    { offset: 0, color: colors[0]! },
+    { offset: 1, color: colors[1]! },
   ])
 }
 function getData() {
-  countUserNum().then((res) => {
+  countUserNum().then((res: any) => {
     if (res.data.success) {
       state.lockNum = res.data.data.lockNum
       state.offlineNum = res.data.data.offlineNum

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ComponentPublicInstance } from 'vue'
 import { computed, ref } from 'vue'
 import { useElementSize } from '@vueuse/core'
 import type { ElScrollbar } from 'element-plus'
@@ -14,7 +13,7 @@ interface Step {
 
 const taskListEl = ref(null)
 const { height } = useElementSize(taskListEl)
-const currentRefEl = ref<HTMLElement | ComponentPublicInstance | null>(null)
+// const currentRefEl = ref<HTMLElement | ComponentPublicInstance | null>(null)
 const scrollbarRefEl = ref<InstanceType<typeof ElScrollbar>>()
 const listHeight = computed(() => `${height.value - 10}px`)
 const dialog = ref(false)
@@ -34,9 +33,9 @@ function generateSteps(initialStep: Step, count: number): Step[] {
   return steps
 }
 
-function onClick() {
-  (currentRefEl.value as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' })
-}
+// function onClick() {
+//   (currentRefEl.value as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' })
+// }
 
 const initialStep: Step = {
   title: '初始步骤',

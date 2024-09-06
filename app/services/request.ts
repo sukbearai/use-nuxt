@@ -31,8 +31,8 @@ export const CancelToken = axios.CancelToken
 
 export interface Params { [key: string]: string | number }
 export interface FileConfig {
-  setCancel?: Function
-  onProgress?: Function
+  setCancel?: () => void
+  onProgress?: () => void
   [key: string]: any
 }
 
@@ -86,23 +86,18 @@ netWork.interceptors.response.use(
 
 // 模拟数据请求适配器
 const mockAdapter = createAlovaMockAdapter([mocks], {
-  // 指定axios请求适配器后，未匹配模拟接口的请求将使用这个适配器发送请求
   httpAdapter: axiosRequestAdapter({
     axios: netWork,
-  }),
-
-  // axiosMockResponse中包含了onMockResponse和onMockError
-  // 用于将模拟数据转换为AxiosResponse和AxiosError兼容的格式
+  }) as any,
   ...axiosMockResponse,
 })
 
 // alova instance
 export const alovaInst = createAlova({
   statesHook: VueHook,
-  // requestAdapter: import.meta.dev
-  //   ? mockAdapter
-  //   : axiosRequestAdapter({
-  //     axios: netWork,
-  //   }),
-  requestAdapter: mockAdapter,
+  requestAdapter: import.meta.dev
+    ? mockAdapter
+    : axiosRequestAdapter({
+      axios: netWork,
+    }) as any,
 })

@@ -6,7 +6,7 @@ const option = ref({})
 
 function getData() {
   installationPlan()
-    .then((res) => {
+    .then((res: any) => {
       if (res.data.success) {
         setOption(res.data.data)
       }

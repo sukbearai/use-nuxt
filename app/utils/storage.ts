@@ -8,7 +8,7 @@ export function setLocalStorage<T>(k: string, v: T) {
   try {
     window.localStorage.setItem(k, JSON.stringify(v))
   }
-  catch (error) {
+  catch {
     return false
   }
 }
@@ -23,7 +23,7 @@ export function getLocalStorage(k: string) {
   try {
     return item ? JSON.parse(item) : item
   }
-  catch (err) {
+  catch {
     return item
   }
 }
@@ -46,7 +46,7 @@ export function setSessionStorage<T>(k: string, v: T) {
   try {
     window.sessionStorage.setItem(k, JSON.stringify(v))
   }
-  catch (error) {
+  catch {
     return false
   }
 }
@@ -60,7 +60,7 @@ export const getSessionStorage: (k: string) => any = (k: string) => {
   try {
     return item ? JSON.parse(item) : item
   }
-  catch (err) {
+  catch {
     return item
   }
 }

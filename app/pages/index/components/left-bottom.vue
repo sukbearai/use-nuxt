@@ -15,7 +15,7 @@ const state = reactive<any>({
 
 function getData() {
   leftBottom({ limitNum: 20 })
-    .then((res) => {
+    .then((res: any) => {
       if (res.data.success) {
         state.list = res.data.data.list
       }
@@ -74,7 +74,7 @@ onMounted(() => {
             <div class="flex">
               <div class="info">
                 <span class="labels">设备ID：</span>
-                <span class="text-content zhuyao doudong wangguan"> {{ item.gatewayno }}</span>
+                <span class="doudong zhuyao wangguan text-content"> {{ item.gatewayno }}</span>
               </div>
               <div class="info">
                 <span class="labels">时间：</span>
@@ -83,7 +83,7 @@ onMounted(() => {
             </div>
 
             <span
-              class="types doudong"
+              class="doudong types"
               :class="{
                 typeRed: item.onlineState === 0,
                 typeGreen: item.onlineState === 1,

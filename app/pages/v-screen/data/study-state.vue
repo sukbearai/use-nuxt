@@ -5,7 +5,7 @@ import { alarmNum } from '~/services/v'
 const option = ref({})
 function getData() {
   alarmNum()
-    .then((res) => {
+    .then((res: any) => {
       if (res.data.success) {
         setOption(res.data.data.dateList, res.data.data.numList, res.data.data.numList2)
       }

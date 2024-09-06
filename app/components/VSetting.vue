@@ -16,21 +16,21 @@ function init() {
   rightBottomRadio.value = indexConfig.value.rightBottomSwiper
 }
 init()
-function handleClose() {}
+// function handleClose() {}
 
-function cancelClick() {
-  settingStore.setSettingShow(false)
-}
+// function cancelClick() {
+//   settingStore.setSettingShow(false)
+// }
 
-function confirmClick() {}
+// function confirmClick() {}
 function isScaleChange(flag: boolean) {
   settingStore.setIsScale(flag)
 }
-function radiochange(blag: boolean) {
-  settingStore.setIsScale(blag)
-  // this.$store.commit('setting/updateSwiper', { val, type })
-}
-function indexRadioChange(flag: boolean) {
+// function radiochange(blag: boolean) {
+//   settingStore.setIsScale(blag)
+//   // this.$store.commit('setting/updateSwiper', { val, type })
+// }
+function indexRadioChange() {
   settingStore.setIndexConfig({
     leftBottomSwiper: leftBottomRadio.value, // 左轮播
     rightBottomSwiper: rightBottomRadio.value, // 右下轮播
@@ -74,7 +74,7 @@ function indexRadioChange(flag: boolean) {
         <div class="setting_content">
           <el-radio-group
             v-model="leftBottomRadio"
-            @change="(flag) => indexRadioChange(flag as boolean)"
+            @change="() => indexRadioChange()"
           >
             <el-radio :label="true">
               是
@@ -90,7 +90,7 @@ function indexRadioChange(flag: boolean) {
         <div class="setting_content">
           <el-radio-group
             v-model="rightBottomRadio"
-            @change="(flag) => indexRadioChange(flag as boolean)"
+            @change="() => indexRadioChange()"
           >
             <el-radio :label="true">
               是

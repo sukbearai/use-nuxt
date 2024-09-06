@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import type { ComponentPublicInstance } from 'vue'
 import { ElScrollbar } from 'element-plus'
 
 const taskListEl = ref(null)
 const { height } = useElementSize(taskListEl)
-const currentRefEl = ref<HTMLElement | ComponentPublicInstance | null>(null)
+// const currentRefEl = ref<HTMLElement | ComponentPublicInstance | null>(null)
 const scrollbarRefEl = ref<InstanceType<typeof ElScrollbar>>()
 const listHeight = computed(() => `${height.value - 20}px`)
 
-function onClick() {
-  (currentRefEl.value as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' })
-}
+// function onClick() {
+//   (currentRefEl.value as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' })
+// }
 </script>
 
 <template>

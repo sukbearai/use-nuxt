@@ -70,7 +70,8 @@ const mocks = defineMock({
   '/v/ranking': () => {
     const num = Mock.mock({ 'list|80': [{ value: '@integer(50,1000)', name: '@city()' }] }).list
     //   console.log("ranking",num);
-    const newNum: any = []; const numObj: any = {}
+    const newNum: any = []
+    const numObj: any = {}
     num.forEach((item: any) => {
       if (!numObj[item.name] && newNum.length < 8) {
         numObj[item.name] = true
@@ -117,7 +118,8 @@ const mocks = defineMock({
       [`category|${num}`]: ['@city()'],
       [`barData|${num}`]: ['@integer(10, 100)'],
     })
-    const lineData = []; const rateData = []
+    const lineData = []
+    const rateData = []
     for (let index = 0; index < num; index++) {
       const lineNum = Mock.mock('@integer(0, 100)') + a.barData[index]
       lineData.push(lineNum)

@@ -2,8 +2,6 @@
 import { h, onMounted, ref } from 'vue'
 import PopupMessage from './popup-message.vue'
 
-const router = useRouter()
-
 const msgVNode = h(PopupMessage, { name: '👏👏👏' }, {
   default: () => [
     h('div', '签到成功'),

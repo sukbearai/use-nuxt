@@ -2,13 +2,13 @@
 import { reactive } from 'vue'
 import dayjs from 'dayjs'
 
-const settingStore = useSettingStore()
+// const settingStore = useSettingStore()
 
 export interface DateDataType {
   dateDay: string
   dateYear: string
   dateWeek: string
-  timing: NodeJS.Timer
+  timing: NodeJS.Timer | null
 }
 
 const dateData = reactive<DateDataType>({
@@ -23,7 +23,7 @@ const weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '�
 function timeFn() {
   dateData.timing = setInterval(() => {
     dateData.dateDay = dayjs().format('YYYY-MM-DD hh : mm : ss')
-    dateData.dateWeek = weekday[dayjs().day()]
+    dateData.dateWeek = weekday[dayjs().day()]!
   }, 1000)
 }
 timeFn()

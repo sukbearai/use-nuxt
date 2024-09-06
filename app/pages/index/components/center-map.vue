@@ -1,3 +1,4 @@
+<!-- eslint-disable no-async-promise-executor -->
 <script setup lang="ts">
 import { getMap, registerMap } from 'echarts/core'
 import { optionHandle, regionCodes } from './center.map'
@@ -15,7 +16,8 @@ withDefaults(
   },
 )
 const option = ref({})
-const code = ref('china'); async function dataSetHandle(regionCode: string, list: object[]) {
+const code = ref('china')
+async function dataSetHandle(regionCode: string, list: object[]) {
   const geojson: any = await getGeojson(regionCode)
   const cityCenter: any = {}
   const mapData: MapdataType[] = []
@@ -39,7 +41,7 @@ const code = ref('china'); async function dataSetHandle(regionCode: string, list
 
 async function getData(regionCode: string) {
   centerMap({ regionCode })
-    .then((res) => {
+    .then((res: any) => {
       if (res.data.success) {
         dataSetHandle(res.data.data.regionCode, res.data.data.dataList)
       }

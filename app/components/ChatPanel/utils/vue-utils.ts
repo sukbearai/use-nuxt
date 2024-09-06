@@ -1,6 +1,6 @@
 /* eslint-disable ts/prefer-literal-enum-member */
 import type { Component, Slots, VNode, VNodeTypes } from 'vue'
-import { isArray, isFunction, isNumber, isObject, isString } from './is'
+import { isArray } from './is'
 
 export enum ShapeFlags {
   ELEMENT = 1,

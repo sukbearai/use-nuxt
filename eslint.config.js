@@ -7,6 +7,7 @@ export default nuxt(
     {
       unocss: true,
       formatters: true,
+      ignores: ['app/styles/**', 'public/**'],
     },
   ),
 )

@@ -16,6 +16,7 @@ export function parseParamUrl(url: string) {
 export function genArr(Arr: any[], id: string): any[] {
   const obj: any = {}
   const arrays = Arr.reduce((cur, item) => {
+    // eslint-disable-next-line ts/no-unused-expressions
     obj[item[id]] ? '' : (obj[item[id]] = true && cur.push(item))
     return cur
   }, [])

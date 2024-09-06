@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CircleCloseFilled } from '@element-plus/icons-vue'
 import { Vue3Lottie } from 'vue3-lottie'
-import ChatInput from './ChatPanel/components/ChatInput.vue'
+// import ChatInput from './ChatPanel/components/ChatInput.vue'
 import ChatItem from './ChatPanel/components/ChatItem.vue'
 import ChatPanel from './ChatPanel/index.vue'
 import chatData from '~/services/chat'
@@ -44,7 +44,7 @@ function handleClose(done: () => void) {
 }
 
 const comRef = ref()
-const inputBar = ref()
+// const inputBar = ref()
 const list = ref<any>([])
 const scrollbar = ref(true)
 const loading = ref(true)
@@ -234,7 +234,7 @@ function onOpen() {
             </div>
           </template>
           <template #item="{ item, index }">
-            <ChatItem :key="index" :item="item" />
+            <ChatItem :key="index" :item="item!" />
           </template>
         </ChatPanel>
       </div>

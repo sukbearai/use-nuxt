@@ -59,7 +59,7 @@ export function useSize({
       return _estimatedSize.value
 
     const _key = dataKeys.value[index]
-    return sizeMap.get(_key) ?? _estimatedSize.value
+    return sizeMap.get(_key!) ?? _estimatedSize.value
   }
 
   const hasItemSize = (key: string | number) => {
@@ -105,6 +105,7 @@ export function useSize({
     let offsetIndex = 0
     while (offset > 0) {
       offset -= getItemSize(_start + offsetIndex)!
+      // eslint-disable-next-line ts/no-unused-expressions
       isForward ? offsetIndex++ : offsetIndex--
     }
     return offsetIndex
