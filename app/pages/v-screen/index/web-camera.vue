@@ -1,61 +1,66 @@
 <script setup lang="ts">
-import { h, onMounted, ref } from 'vue'
-import PopupMessage from './popup-message.vue'
-
-const { $myObject } = useNuxtApp()
-
-const msgVNode = h(PopupMessage, { name: '👏👏👏' }, {
-  default: () => [
-    h('div', '签到成功'),
-  ],
-})
+// import { h } from 'vue'
+// import PopupMessage from './popup-message.vue'
 
 const containerRef = ref<HTMLCanvasElement | null>(null)
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 
-onMounted(async () => {
-  loadSequenceFrame()
-  //  window.addEventListener("resize", drawSequenceFrameOnResize);
-  window.console.log($myObject, '获取的qt对象')
+const { sendMessageToCpp } = useWebChannel({
+  onDataUpdated(data) {
+    window.console.log('这是QT数据:', data)
+    drawSequenceFrame(data.img)
+    sendMessageToCpp('这是JS数据')
+  },
 })
 
-function loadSequenceFrame() {
-  let frameCount = 1
-  const totalFrames = 32
-  const frameRate = 10 // 每秒10帧
-  const frameDuration = 1000 / frameRate
-  let lastFrameTime = 0
+// const msgVNode = h(PopupMessage, { name: '👏👏👏' }, {
+//   default: () => [
+//     h('div', '签到成功'),
+//   ],
+// })
 
-  function animate(timestamp: number) {
-    if (!lastFrameTime)
-      lastFrameTime = timestamp
+// onMounted(async () => {
+//   loadSequenceFrame()
+//   //  window.addEventListener("resize", drawSequenceFrameOnResize);
+// })
 
-    const elapsed = timestamp - lastFrameTime
+// function loadSequenceFrame() {
+//   let frameCount = 1
+//   const totalFrames = 32
+//   const frameRate = 10 // 每秒10帧
+//   const frameDuration = 1000 / frameRate
+//   let lastFrameTime = 0
 
-    if (elapsed >= frameDuration) {
-      drawSequenceFrame(`/sequence-frame/${frameCount}.jpg`)
-      frameCount++
-      lastFrameTime = timestamp - (elapsed % frameDuration)
+//   function animate(timestamp: number) {
+//     if (!lastFrameTime)
+//       lastFrameTime = timestamp
 
-      if (frameCount > totalFrames) {
-        ElMessage.success({
-          message: msgVNode,
-          duration: 5000,
-          offset: 800,
-        })
+//     const elapsed = timestamp - lastFrameTime
 
-        setTimeout(() => {
-          navigateTo('/v-screen/data')
-        }, 5000)
-        return
-      }
-    }
+//     if (elapsed >= frameDuration) {
+//       drawSequenceFrame(`/sequence-frame/${frameCount}.jpg`)
+//       frameCount++
+//       lastFrameTime = timestamp - (elapsed % frameDuration)
 
-    requestAnimationFrame(animate)
-  }
+//       if (frameCount > totalFrames) {
+//         ElMessage.success({
+//           message: msgVNode,
+//           duration: 5000,
+//           offset: 800,
+//         })
 
-  requestAnimationFrame(animate)
-}
+//         setTimeout(() => {
+//           navigateTo('/v-screen/data')
+//         }, 5000)
+//         return
+//       }
+//     }
+
+//     requestAnimationFrame(animate)
+//   }
+
+//   requestAnimationFrame(animate)
+// }
 
 function drawSequenceFrame(url: string) {
   const canvas = canvasRef.value

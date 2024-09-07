@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 /****************************************************************************
 **
 ** Copyright (C) 2016 The Qt Company Ltd.
@@ -152,11 +153,12 @@ const QWebChannel = function (transport, initCallback) {
   }
 
   channel.exec({ type: QWebChannelMessageTypes.init }, (data) => {
-    for (var objectName in data) {
+    for (const objectName in data) {
+      // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-vars
       const object = new QObject(objectName, data[objectName], channel)
     }
     // now unwrap properties, which might reference other registered objects
-    for (var objectName in channel.objects) {
+    for (const objectName in channel.objects) {
       channel.objects[objectName].unwrapProperties()
     }
     if (initCallback) {
@@ -316,6 +318,7 @@ function QObject(name, data, webChannel) {
       const args = []
       let callback
       for (let i = 0; i < arguments.length; ++i) {
+        // eslint-disable-next-line prefer-rest-params
         const argument = arguments[i]
         if (typeof argument === 'function') {
           callback = argument
@@ -401,14 +404,20 @@ function QObject(name, data, webChannel) {
 
   data.signals.forEach((signal) => { addSignal(signal, false) })
 
-  for (var name in data.enums) {
+  for (const name in data.enums) {
     object[name] = data.enums[name]
   }
 }
 
 // required for use with nodejs
-if (typeof module === 'object') {
-  module.exports = {
-    QWebChannel,
-  }
-}
+// if (typeof module === 'object') {
+//   module.exports = {
+//     QWebChannel,
+//   }
+// }
+
+export default QWebChannel
+
+export const isQtClient = (function () {
+  return navigator.userAgent.includes('QtWebEngine')
+})()
