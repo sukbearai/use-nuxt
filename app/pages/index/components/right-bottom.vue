@@ -73,7 +73,7 @@ onMounted(() => {
             <div class="flex">
               <div class="info">
                 <span class="labels">设备ID：</span>
-                <span class="text-content zhuyao"> {{ item.gatewayno }}</span>
+                <span class="zhuyao text-content"> {{ item.gatewayno }}</span>
               </div>
               <div class="info">
                 <span class="labels">型号：</span>

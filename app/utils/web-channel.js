@@ -402,7 +402,9 @@ function QObject(name, data, webChannel) {
 
   data.properties.forEach(bindGetterSetter)
 
-  data.signals.forEach((signal) => { addSignal(signal, false) })
+  data.signals.forEach((signal) => {
+    addSignal(signal, false)
+  })
 
   for (const name in data.enums) {
     object[name] = data.enums[name]
