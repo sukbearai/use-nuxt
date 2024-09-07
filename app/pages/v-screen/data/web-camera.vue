@@ -21,7 +21,7 @@ function loadSequenceFrame() {
     const elapsed = timestamp - lastFrameTime
 
     if (elapsed >= frameDuration) {
-      drawSequenceFrame(`/sequence-frame/${frameCount}.jpg`)
+      drawSequenceFrame(`/sequence-frame/${frameCount}.jpg`, canvasRef.value!)
       frameCount++
       lastFrameTime = timestamp - (elapsed % frameDuration)
 
@@ -34,50 +34,6 @@ function loadSequenceFrame() {
   }
 
   requestAnimationFrame(animate)
-}
-
-function drawSequenceFrame(url: string) {
-  const canvas = canvasRef.value
-  if (!canvas) {
-    console.error('Canvas element not found!')
-    return
-  }
-
-  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-
-  const img = new Image()
-  img.onload = () => {
-    // 设置canvas尺寸
-    canvas.width = canvas.clientWidth
-    canvas.height = canvas.clientHeight
-
-    // 图片比例和canvas比例
-    const imgRatio = img.width / img.height
-    const canvasRatio = canvas.width / canvas.height
-
-    let drawWidth, drawHeight, drawX, drawY
-
-    // 根据比例确定绘制尺寸和位置
-    if (imgRatio > canvasRatio) {
-      drawWidth = canvas.width
-      drawHeight = canvas.width / imgRatio
-      drawX = 0
-      drawY = (canvas.height - drawHeight) / 2
-    }
-    else {
-      drawWidth = canvas.height * imgRatio
-      drawHeight = canvas.height
-      drawX = (canvas.width - drawWidth) / 2
-      drawY = 0
-    }
-
-    // 清除之前的内容
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-    // 绘制图片
-    ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight - 15)
-  }
-  img.src = url
 }
 
 // function drawSequenceFrameOnResize() {
