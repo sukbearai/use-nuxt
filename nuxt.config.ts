@@ -100,9 +100,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
-      script: [{
-        src: '/plugins/web-channel.js',
-      }],
+      script: [],
     },
   },
 
