@@ -22,15 +22,15 @@ pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
 ## QT调试
 
 ```c++
-// 开启调试端口
+// c++ 开启调试端口
 qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "6483");
 
-// chrome://inspect/#devices
+// 浏览器访问调试端口 chrome://inspect/#devices
 ```
 
 ## 部署
 
-配置服务器访问路径
+配置路径
 
 ```ts
 export default defineNuxtConfig({
@@ -40,11 +40,13 @@ export default defineNuxtConfig({
 })
 ```
 
+打包编译
+
 ```bash
 pnpm run generate
 ```
 
-将.output文件夹下的整个public目录内容放置文件服务器访问目录下即可
+将`.output`文件夹下的整个`public`目录内容放置于文件服务器访问目录即可
 
 ## 致谢
 
