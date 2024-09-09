@@ -8,7 +8,7 @@ const canvasRef = ref<HTMLCanvasElement | null>(null)
 const { sendMessageToCpp } = useWebChannel({
   async onDataUpdated(data: any) {
     window.console.log('这是QT数据:', data)
-    await drawSequenceFrame(data, canvasRef.value!)
+    await drawSequenceFrame(data?.img, canvasRef.value!)
     sendMessageToCpp('这是JS数据')
   },
 })
