@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import type { ScrollOptions } from '../types'
 import { useSize } from '../hooks/useSize'
 import { isNumber } from '../utils/is'
-import type { ScrollOptions } from '../types'
 import VirtualListItem from './VirtualListItem'
 
 const props = defineProps({

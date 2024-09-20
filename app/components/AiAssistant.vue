@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { CircleCloseFilled } from '@element-plus/icons-vue'
 import { Vue3Lottie } from 'vue3-lottie'
+import chatData from '~/services/chat'
 // import ChatInput from './ChatPanel/components/ChatInput.vue'
 import ChatItem from './ChatPanel/components/ChatItem.vue'
 import ChatPanel from './ChatPanel/index.vue'
-import chatData from '~/services/chat'
 
 const props = defineProps({
   modelValue: {

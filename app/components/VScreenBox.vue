@@ -1,7 +1,7 @@
 <!-- eslint-disable ts/no-unused-expressions -->
 <script lang="ts" setup>
-import { nextTick, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 import type { CSSProperties, PropType } from 'vue'
+import { nextTick, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 
 const props = defineProps({
   width: {

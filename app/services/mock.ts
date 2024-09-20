@@ -1,6 +1,6 @@
-import Mock from 'mockjs'
 import { defineMock } from '@alova/mock'
-import { RandomNumBoth, genArr, parseParamUrl } from '~/utils'
+import Mock from 'mockjs'
+import { genArr, parseParamUrl, RandomNumBoth } from '~/utils'
 
 const mocks = defineMock({
   '/v/countUserNum': () => {

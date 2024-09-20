@@ -1,8 +1,8 @@
+import type { Dayjs } from 'dayjs'
 /* eslint-disable regexp/no-super-linear-backtracking */
 /* eslint-disable regexp/no-unused-capturing-group */
 /* eslint-disable eslint-comments/no-unlimited-disable */
 import type { ComponentPublicInstance, VNode, VNodeNormalizedChildren } from 'vue'
-import type { Dayjs } from 'dayjs'
 
 const opt = Object.prototype.toString
 

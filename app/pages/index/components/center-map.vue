@@ -1,9 +1,9 @@
 <!-- eslint-disable no-async-promise-executor -->
 <script setup lang="ts">
-import { getMap, registerMap } from 'echarts/core'
-import { optionHandle, regionCodes } from './center.map'
 import type { MapdataType } from './center.map'
+import { getMap, registerMap } from 'echarts/core'
 import { centerMap, getMapData } from '~/services/v'
+import { optionHandle, regionCodes } from './center.map'
 
 // china 代表中国 其他地市是行政编码
 withDefaults(

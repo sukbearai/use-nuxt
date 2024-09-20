@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import type { PropType } from 'vue'
 import { merge } from 'lodash-es'
 
-import type { PropType } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   color: {

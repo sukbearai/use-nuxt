@@ -2,9 +2,9 @@
 </script>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from 'vue'
-import { CountUp } from 'countup.js'
 import type { CountUpOptions } from 'countup.js'
+import { CountUp } from 'countup.js'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 
 const props = withDefaults(
   defineProps<{

@@ -105,7 +105,7 @@ export function useSize({
     let offsetIndex = 0
     while (offset > 0) {
       offset -= getItemSize(_start + offsetIndex)!
-      // eslint-disable-next-line ts/no-unused-expressions
+
       isForward ? offsetIndex++ : offsetIndex--
     }
     return offsetIndex

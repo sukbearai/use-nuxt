@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import VCharts from 'vue-echarts'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
 import {
   BarChart,
   EffectScatterChart,
@@ -19,6 +16,9 @@ import {
   TooltipComponent,
   VisualMapComponent,
 } from 'echarts/components'
+import { use } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import VCharts from 'vue-echarts'
 
 defineProps({
   option: {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import WebCamera from './web-camera.vue'
-import TaskList from './task-list.vue'
 import StudyState from './study-state.vue'
+import TaskList from './task-list.vue'
+import WebCamera from './web-camera.vue'
 
 definePageMeta({
   layout: 'home',

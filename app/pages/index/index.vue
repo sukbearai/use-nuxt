@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import LeftTop from './components/left-top.vue'
-import LeftCenter from './components/left-center.vue'
-import LeftBottom from './components/left-bottom.vue'
-import CenterMap from './components/center-map.vue'
 import CenterBottom from './components/center-bottom.vue'
-import RightTop from './components/right-top.vue'
-import RightCenter from './components/right-center.vue'
+import CenterMap from './components/center-map.vue'
+import LeftBottom from './components/left-bottom.vue'
+import LeftCenter from './components/left-center.vue'
+import LeftTop from './components/left-top.vue'
 import RightBottom from './components/right-bottom.vue'
+import RightCenter from './components/right-center.vue'
+import RightTop from './components/right-top.vue'
 
 definePageMeta({
   layout: 'home',

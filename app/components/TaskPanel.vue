@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { useElementSize } from '@vueuse/core'
 import type { ElScrollbar } from 'element-plus'
+import { useElementSize } from '@vueuse/core'
+import { computed, ref } from 'vue'
 
 type Status = 'progress' | 'success' | 'error' | 'warning' | 'info'
 
