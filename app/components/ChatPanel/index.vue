@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import type { ScrollbarProps } from '@arco-design/web-vue'
-import VirtualList from './components/VirtualList.vue'
 import { useComponentRef } from './hooks/useComponentRef'
 import { useScrollbar } from './hooks/useScrollbar'
 import { isNumber } from './utils/is'
+import VirtualList from './components/VirtualList.vue'
 
 const props = defineProps({
   /**

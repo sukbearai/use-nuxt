@@ -1,6 +1,8 @@
-import { defineMock } from '@alova/mock'
 import Mock from 'mockjs'
-import { genArr, parseParamUrl, RandomNumBoth } from '~/utils'
+import { defineMock } from '@alova/mock'
+import { RandomNumBoth, genArr, parseParamUrl } from '~/utils'
+
+// mockData.ts
 
 const mocks = defineMock({
   '/v/countUserNum': () => {

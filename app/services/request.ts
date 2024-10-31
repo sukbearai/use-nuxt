@@ -1,12 +1,12 @@
-import type { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { axiosMockResponse, axiosRequestAdapter } from '@alova/adapter-axios'
-import { createAlovaMockAdapter } from '@alova/mock'
 import { createAlova } from 'alova'
 import VueHook from 'alova/vue'
+import { createAlovaMockAdapter } from '@alova/mock'
+import { axiosMockResponse, axiosRequestAdapter } from '@alova/adapter-axios'
 import axios from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+import mocks from './mock'
 import { RequestEnum, StorageEnum } from '~/constants'
 import { getLocalStorage } from '~/utils'
-import mocks from './mock'
 
 interface BaseConfig {
   baseUrl: string

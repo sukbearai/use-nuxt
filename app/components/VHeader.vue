@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
 import { reactive } from 'vue'
+import dayjs from 'dayjs'
 
 // const settingStore = useSettingStore()
 
@@ -18,7 +18,7 @@ const dateData = reactive<DateDataType>({
   timing: null,
 })
 
-const { setSettingShow } = useSettingStore()
+// const { setSettingShow } = useSettingStore()
 const weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 function timeFn() {
   dateData.timing = setInterval(() => {
@@ -31,13 +31,11 @@ timeFn()
 
 <template>
   <div class="d-flex jc-center title_wrap">
-    <div class="zuojuxing" />
+    <!-- <div class="zuojuxing" />
     <div class="youjuxing" />
     <div class="guang" />
     <div class="d-flex jc-center">
-      <div class="title">
-        <span class="title-text">互联网设备可视化平台</span>
-      </div>
+      <div class="title" />
     </div>
     <div class="timers">
       {{ dateData.dateYear }} {{ dateData.dateWeek }} {{ dateData.dateDay }}
@@ -45,7 +43,8 @@ timeFn()
       <div class="setting_icon" @click="setSettingShow(true)">
         <img src="/assets/v/setting.png" alt="设置">
       </div>
-    </div>
+    </div> -->
+    <div class="title" />
   </div>
 </template>
 
@@ -111,8 +110,12 @@ timeFn()
   text-align: center;
   background-size: cover;
   color: transparent;
-  height: 60px;
+  min-height: 90px;
+  max-height: 90px;
   line-height: 46px;
+  background-image: url('/assets/img/header.png');
+  background-size: cover;
+  background-position: center center;
 
   .title-text {
     font-size: 38px;

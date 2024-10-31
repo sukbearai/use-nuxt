@@ -34,6 +34,7 @@ const conf = {
     :id="tinymceId"
     ref="editorRef"
     v-model="modelValue"
+    disabled
     :init="conf"
     tinymce-script-src="/plugins/tinymce/tinymce.min.js"
   />

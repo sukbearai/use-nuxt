@@ -1,25 +1,18 @@
 <script setup lang="ts">
-withDefaults(
-  defineProps<{
-    // 标题
-    title: number | string
-  }>(),
-  {
-    title: '',
+defineProps({
+  titleClass: {
+    type: String,
   },
-)
+  bg: {
+    type: String,
+    default: () => 'lg',
+  },
+})
 </script>
 
 <template>
-  <VBorderBox13>
-    <div v-if="title !== ''" class="item_title">
-      <div class="zuo" />
-      <span class="title-inner"> &nbsp;&nbsp;{{ title }}&nbsp;&nbsp; </span>
-      <div class="you" />
-    </div>
-    <div
-      :class="title !== '' ? 'item_title_content' : 'item_title_content_def'"
-    >
+  <VBorderBox13 :bg="bg" :title-class="titleClass">
+    <div class="h-full">
       <slot />
     </div>
   </VBorderBox13>
@@ -63,14 +56,5 @@ $item_title_content-height: calc(100% - 38px);
 :deep(.dv-border-box-content) {
   box-sizing: border-box;
   padding: 6px 16px 0px;
-}
-
-.item_title_content {
-  height: $item_title_content-height;
-}
-
-.item_title_content_def {
-  width: 100%;
-  height: 100%;
 }
 </style>

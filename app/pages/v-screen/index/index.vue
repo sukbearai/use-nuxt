@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import WebCamera from './web-camera.vue'
+import FaceScan from './components/FaceScan.vue'
 
 definePageMeta({
   layout: 'home',
 })
+
+const { sendMessageToCpp } = useWebChannel()
+useHeartBeat('v', '0', sendMessageToCpp)
 </script>
 
 <template>
   <div class="index-box">
     <div class="content_center">
-      <VItemWrap class="content_center_camera" title="人脸识别">
-        <WebCamera />
-      </VItemWrap>
+      <div class="h-full w-full px-8">
+        <FaceScan />
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +23,7 @@ definePageMeta({
 .index-box {
   width: 100%;
   display: flex;
+  flex: 1;
   min-height: calc(100% - 64px);
   justify-content: space-between;
 }
@@ -28,10 +32,7 @@ definePageMeta({
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-
-  .content_center_camera {
-    height: 80vh;
-  }
+  justify-content: center;
+  align-items: center;
 }
 </style>

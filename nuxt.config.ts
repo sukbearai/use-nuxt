@@ -48,7 +48,7 @@ export default defineNuxtConfig({
 
   legacy: {
     targets: ['chrome 69'],
-    modernPolyfills: ['es.global-this', 'es.object.from-entries', 'es.array.flat-map', 'es.array.flat'],
+    modernPolyfills: ['es.global-this', 'es.object.from-entries', 'es.array.flat-map', 'es.array.flat', 'es.promise.all-settled'],
   },
 
   elementPlus: {
@@ -121,6 +121,11 @@ export default defineNuxtConfig({
 
   future: {
     compatibilityVersion: 4,
+  },
+
+  sourcemap: {
+    client: true,
+    server: true,
   },
 
   hooks: {

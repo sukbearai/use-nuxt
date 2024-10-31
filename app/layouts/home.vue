@@ -8,10 +8,8 @@ const wrapperStyle = {}
 <template>
   <div class="page">
     <VScreenBox
-      width="1920"
-      height="1080"
       :delay="500"
-      :full-screen="false"
+      :full-screen="true"
       :box-style="{
         background: '#03050C',
         overflow: isScale ? 'hidden' : 'auto',
@@ -24,7 +22,7 @@ const wrapperStyle = {}
         <slot />
       </div>
     </VScreenBox>
-    <VSetting />
+    <!-- <VSetting /> -->
   </div>
 </template>
 
@@ -34,8 +32,11 @@ const wrapperStyle = {}
   height: 100%;
   padding: 16px 16px 16px 16px;
   box-sizing: border-box;
-  background-image: url('/assets/v/pageBg.png');
+  background-image: url('/assets/img/scan-bg.png');
   background-size: cover;
   background-position: center center;
+  background-color: '#03050C';
+  display: flex;
+  flex-direction: column;
 }
 </style>

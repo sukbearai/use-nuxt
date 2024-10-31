@@ -231,16 +231,12 @@ onMounted(() => {
   <div ref="studyStateEl" class="study-state relative">
     <el-carousel :height="listHeight" motion-blur arrow="never" :interval="5000" :autoplay="false">
       <el-carousel-item v-for="item in 4" :key="item" class="" label="名字">
-        <div class="h-full w-full flex">
+        <div class="h-[92%] w-full flex">
           <v-chart v-if="JSON.stringify(option) !== '{}'" :autoresize="true" class="chart" :option="option" />
           <v-chart v-if="JSON.stringify(option) !== '{}'" :autoresize="true" class="chart" :option="option" />
         </div>
       </el-carousel-item>
     </el-carousel>
-    <div class="absolute bottom-2 text-sm text-[#d3d6dd]">
-      <div>情绪：积极</div>
-      <div>健康状况：良好</div>
-    </div>
   </div>
 </template>
 

@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import { merge } from 'lodash-es'
 
-import { computed, ref } from 'vue'
-
-const props = defineProps({
+defineProps({
   color: {
     type: Array as unknown as PropType<[string, string]>,
     default: () => [],
@@ -13,64 +10,43 @@ const props = defineProps({
     type: String,
     default: 'transparent',
   },
+  bg: {
+    type: String,
+    default: 'lg',
+  },
+  titleClass: {
+    type: String,
+  },
 })
-const defaultColor = ['#6586ec', '#2cf7fe']
+
 const domRef = ref(null)
 const { width, height } = useElementSize(domRef, { width: 0, height: 0 }, { box: 'border-box' })
-const mergedColor = computed<[string, string]>(() => {
-  return merge(defaultColor, props.color)
-})
 </script>
 
 <template>
   <div ref="domRef" class="dv-border-box-13 dv-border-box">
-    <svg :width="width" :height="height" class="dv-border-svg-container">
-      <path
-        :fill="backgroundColor"
-        :stroke="mergedColor[0]"
-        :d="`
-            M 5 20 L 5 10 L 12 3  L 60 3 L 68 10
-            L ${width - 20} 10 L ${width - 5} 25
-            L ${width - 5} ${height - 5} L 20 ${height - 5}
-            L 5 ${height - 20} L 5 20
-        `"
-      />
-
-      <path
-        fill="transparent"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-dasharray="10, 5"
-        :stroke="mergedColor[0]"
-        d="M 16 9 L 61 9"
-      />
-
-      <path
-        fill="transparent"
-        stroke="{mergedColor[1]}"
-        d="M 5 20 L 5 10 L 12 3  L 60 3 L 68 10"
-      />
-
-      <path
-        fill="transparent"
-        :stroke="mergedColor[1]"
-        :d="`M ${width - 5} ${height - 30} L ${width - 5} ${height - 5} L ${
-          width - 30
-        } ${height - 5}`"
-      />
-    </svg>
+    <div class="dv-border-svg-container" :style="{ width: `${width}px`, height: `${height}px`, backgroundImage: `url('/assets/img/border-${bg}.png')` }" />
+    <div v-if="titleClass" class="item_title" :class="{ 'mb-[18px]': bg !== 'mini' && bg !== 'env', [titleClass]: !!titleClass, 'ml-[14px]': bg !== 'mini' && bg !== 'env' }" />
     <div class="dv-border-box-content">
-      <slot />
+      <div class="h-full">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.item_title {
+  margin-top: 20px;
+}
+
 .dv-border-box {
   position: relative;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .dv-border-svg-container {
   position: absolute;
@@ -79,10 +55,105 @@ const mergedColor = computed<[string, string]>(() => {
   top: 0px;
   left: 0px;
   display: block;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 10px;
 }
 .dv-border-box-content {
   position: relative;
   width: 100%;
-  height: 100%;
+  flex: 1;
+}
+
+.title-task {
+  background-image: url('/assets/img/title-task.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 90px;
+  height: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.title-camera-h {
+  background-image: url('/assets/img/title-camera-h.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 160px;
+  height: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.title-camera-v {
+  background-image: url('/assets/img/title-camera-v.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 220px;
+  height: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.title-evaluation {
+  background-image: url('/assets/img/title-evaluation.png');
+  background-size: contain;
+  background-position: left top;
+  background-repeat: no-repeat;
+  width: 368px;
+  height: 29px;
+  position: relative;
+  z-index: 1;
+}
+
+.title-env {
+  background-image: url('/assets/img/title-env.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 110px;
+  height: 25px;
+  position: relative;
+  z-index: 1;
+  margin-left: 20px;
+}
+
+.title-camera-task {
+  background-image: url('/assets/img/title-camera-task.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 140px;
+  height: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.title-platform {
+  background-image: url('/assets/img/title-platform.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 158px;
+  height: 36px;
+  position: relative;
+  z-index: 1;
+  margin-left: 0px !important;
+}
+
+.title-scene {
+  background-image: url('/assets/img/title-scene.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 158px;
+  height: 36px;
+  margin-left: 10px;
+  position: relative;
+  z-index: 1;
+  margin-left: 0px !important;
 }
 </style>

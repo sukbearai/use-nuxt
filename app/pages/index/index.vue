@@ -10,6 +10,7 @@ import RightTop from './components/right-top.vue'
 
 definePageMeta({
   layout: 'home',
+  middleware: 'redirect',
 })
 </script>
 

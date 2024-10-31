@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { CircleCloseFilled } from '@element-plus/icons-vue'
 import { Vue3Lottie } from 'vue3-lottie'
-import chatData from '~/services/chat'
 // import ChatInput from './ChatPanel/components/ChatInput.vue'
 import ChatItem from './ChatPanel/components/ChatItem.vue'
 import ChatPanel from './ChatPanel/index.vue'
+import chatData from '~/services/chat'
+import { QTClientSDK } from '~/services/qt'
+import { DataType, type QTResponseType, ReturnCode, State } from '~/types/qt'
 
 const props = defineProps({
   modelValue: {
@@ -14,6 +16,48 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['close', 'open', 'update:model-value'])
+
+const sdk = new QTClientSDK()
+
+async function handleAIAssistantData(data: QTResponseType): Promise<void> {
+  if (data.type === DataType.AI_ASSISTANT) {
+    switch (data.ret) {
+      case ReturnCode.RECORDING_STATUS:
+        handleRecordingStatus(data)
+        break
+      case ReturnCode.VOICE_TO_TEXT:
+        await handleVoiceToText(data)
+        break
+      case ReturnCode.AI_INFERENCE:
+        await handleAIInference(data)
+        break
+      default:
+        console.warn(`Unknown return code: ${data.ret}`)
+    }
+  }
+}
+
+function handleRecordingStatus(data: QTResponseType): void {
+  window.console.log('录音状态', data.state)
+}
+
+async function handleVoiceToText(data: QTResponseType): Promise<void> {
+  if (data.state === State.COMPLETED && data.text) {
+    await sendMessage(data.text)
+  }
+}
+
+async function handleAIInference(data: QTResponseType): Promise<void> {
+  if (data.state === State.COMPLETED && data.text) {
+    await sendMessage(data.text, false)
+  }
+}
+
+const { sendMessageToCpp, connect, disconnect } = useWebChannel()
+
+const cbId = connect((data: QTResponseType) => {
+  handleAIAssistantData(data)
+})
 
 const chatWrapEl = ref()
 const { height } = useElementSize(chatWrapEl)
@@ -115,7 +159,7 @@ function handleReachTop() {
   queryList(pageNo.value, pageSize.value)
 }
 
-function sendMessage(msg: string, isStudent: boolean) {
+function sendMessage(msg: string, isStudent: boolean = true) {
   return new Promise((resolve) => {
     btnLoading.value = true
     setTimeout(() => {
@@ -143,22 +187,26 @@ function onSwitchAnimation() {
     lottieContainerOne.value!.play()
     lottieContainerTwo.value!.play()
     isRecording.value = true
+    window.console.log('开始录音', sdk.createMicrophoneControlDTO('0'))
+    sendMessageToCpp(sdk.createMicrophoneControlDTO('0'))
   }
   else {
     lottieContainerOne.value!.stop()
     lottieContainerTwo.value!.stop()
     isRecording.value = false
+    window.console.log('结束录音', sdk.createMicrophoneControlDTO('1'))
+    sendMessageToCpp(sdk.createMicrophoneControlDTO('1'))
   }
 }
 
 const debounceOnSwitchAnimation = useDebounceFn(onSwitchAnimation, 500)
 
-watch(isRecording, async (val) => {
-  if (!val) {
-    await sendMessage('你好，AI助教', true)
-    await sendMessage('你好，我可以帮助你什么？', false)
-  }
-})
+// watch(isRecording, async (val) => {
+//   if (!val) {
+//     await sendMessage('你好，AI助教', true)
+//     await sendMessage('你好，我可以帮助你什么？', false)
+//   }
+// })
 
 // 打开弹出框加载数据
 function onOpen() {
@@ -166,6 +214,10 @@ function onOpen() {
   queryList(pageNo.value, pageSize.value)
   emit('open')
 }
+
+onBeforeUnmount(() => {
+  disconnect(cbId)
+})
 </script>
 
 <template>

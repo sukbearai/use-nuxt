@@ -1,5 +1,3 @@
-// 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
-
 export class QTClientSDK {
   // 定义命令类型
   public static readonly Command = {

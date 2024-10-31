@@ -10,7 +10,7 @@ interface QtWebSocketOptions {
 }
 
 type CallbackId = string
-type Callback = (data: QTResponseType) => void
+type Callback<T = unknown> = (data: QTResponseType<T>) => void
 
 let cacheQtObject: any = null
 const globalCallbackMap = new Map<CallbackId, Callback>()
@@ -19,6 +19,8 @@ export function useWebChannel(options: QtWebSocketOptions = {}) {
   const qtObject = ref<any>(null)
 
   const sendMessageToCpp = (message: any) => {
+    qtObject.value = cacheQtObject
+
     if (qtObject.value && typeof qtObject.value.receiveMessage === 'function') {
       qtObject.value.receiveMessage(message)
     }
@@ -27,9 +29,9 @@ export function useWebChannel(options: QtWebSocketOptions = {}) {
     }
   }
 
-  const connect = (callback: Callback): CallbackId => {
+  const connect = <T = unknown>(callback: Callback<T>): CallbackId => {
     const id = `${Date.now()}-${Math.random().toString(36).substring(2)}`
-    globalCallbackMap.set(id, callback)
+    globalCallbackMap.set(id, callback as Callback<any>)
     return id
   }
 

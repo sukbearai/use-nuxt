@@ -1,7 +1,7 @@
 <!-- eslint-disable ts/no-unused-expressions -->
 <script lang="ts" setup>
-import type { CSSProperties, PropType } from 'vue'
 import { nextTick, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
+import type { CSSProperties, PropType } from 'vue'
 
 const props = defineProps({
   width: {
@@ -142,8 +142,10 @@ function updateSize() {
   }
 }
 function clearScreenWrapperStyle() {
-  screenWrapper.value!.style.transform = ''
-  screenWrapper.value!.style.margin = ''
+  if (screenWrapper.value) {
+    screenWrapper.value.style.transform = ''
+    screenWrapper.value.style.margin = ''
+  }
 }
 function autoScale(scale: number) {
   if (!props.autoScale) {

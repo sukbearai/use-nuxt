@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 
 const isScaleRadio = ref(false)
 const leftBottomRadio = ref(true)

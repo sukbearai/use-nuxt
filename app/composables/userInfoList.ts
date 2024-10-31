@@ -1,15 +1,11 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-
-interface UserInfo {
-  name: string
-  avatar: string
-}
+import type { UserInfo } from '~/types/qt'
 
 export const useUserInfoListStore = defineStore('user', () => {
   const userInfoList = ref<UserInfo[]>([])
 
-  function setNewUserInfo(userInfo: UserInfo) {
-    userInfoList.value.push(userInfo)
+  function setUserInfoList(list: UserInfo[]) {
+    userInfoList.value = list
   }
 
   const getUserInfoList = computed(() => userInfoList.value)
@@ -17,9 +13,10 @@ export const useUserInfoListStore = defineStore('user', () => {
   const isExistsCurrentUser = computed(() => userInfoList.value.length > 0)
 
   return {
-    setNewUserInfo,
+    setUserInfoList,
     getUserInfoList,
     isExistsCurrentUser,
+    userInfoList,
   }
 })
 

@@ -8,7 +8,7 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  isCheckIn: {
+  state: {
     type: Boolean,
     default: false,
   },
@@ -26,11 +26,11 @@ const props = defineProps({
 <template>
   <div class="user-info px-4">
     <el-avatar :size="props.size" :src="props.avatar" />
-    <div class="text-sm">
+    <div class="text-sm" :class="props.state ? 'text-green' : 'text-red'">
       {{ props.name }}
     </div>
     <div v-if="showLabel" class="text-sm">
-      <el-text v-if="props.isCheckIn" class="mx-1" type="success">
+      <el-text v-if="props.state" class="mx-1" type="success">
         已签到
       </el-text>
       <el-text v-else class="mx-1" type="danger">

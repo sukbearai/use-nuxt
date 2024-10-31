@@ -1,3 +1,3 @@
-<template class="s-screen">
+<template>
   <NuxtPage />
 </template>
