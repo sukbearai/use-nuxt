@@ -100,7 +100,14 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
-      script: [],
+      script: [
+        {
+          src: '/live2d.min.js',
+        },
+        {
+          src: '/live2dcubismcore.min.js',
+        },
+      ],
     },
   },
 

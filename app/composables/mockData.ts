@@ -345,10 +345,21 @@ export function useDynamicMockData() {
   let taskIndex = 0
   const env1 = ref(50)
   const env2 = ref(75)
+  const playTalkAct = ref(false)
+
+  // 结束口播动画
+  const stopDynamicTalkAnimation = (ms: number) => {
+    setTimeout(() => {
+      playTalkAct.value = false
+    }, Math.max(3000, ms))
+  }
 
   // 生成新的聊天内容
   const generateNewChat = () => {
     const template = chatTemplates[Math.floor(Math.random() * chatTemplates.length)]!
+
+    stopDynamicTalkAnimation(template.valueContent.length * 100)
+
     return {
       ...template,
       id: `mock${Date.now()}${chatCounter++}`,
@@ -386,6 +397,9 @@ export function useDynamicMockData() {
     if (timer)
       clearInterval(timer)
     timer = setInterval(() => {
+      // 口播动画
+      playTalkAct.value = true
+
       // 动态更新任务列表状态
       const currentTask = taskList.value[taskIndex]
       if (currentTask && currentTask.stepList[0]) {
@@ -424,6 +438,7 @@ export function useDynamicMockData() {
   return {
     env1,
     env2,
+    playTalkAct,
     chatList,
     evaluateList,
     taskList,

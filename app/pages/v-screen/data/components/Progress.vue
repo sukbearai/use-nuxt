@@ -34,11 +34,11 @@ const strokeColor = computed(() => {
 <template>
   <svg :width="props.width" :height="props.height" viewBox="0 0 200 200">
     <!-- 背景圆环 -->
-    <circle cx="100" cy="100" r="94" stroke="#032978" stroke-width="6" fill="none" />
-    <circle cx="100" cy="100" r="79" stroke="#e6e6e6" stroke-width="0" fill="#021C57" />
-    <circle cx="100" cy="100" r="46" stroke="#e6e6e6" stroke-width="0" fill="#032978" />
+    <circle cx="100" cy="100" r="100" stroke="#032978" stroke-width="8" fill="none" />
+    <circle cx="100" cy="100" r="90" stroke="#e6e6e6" stroke-width="0" fill="#021C57" />
+    <circle cx="100" cy="100" r="80" stroke="#e6e6e6" stroke-width="0" fill="#032978" />
 
-    <text x="56" y="110" font-size="14" fill="#fff">{{ props.text }}</text>
+    <text x="48" y="120" font-size="11" fill="#fff">{{ props.text }}</text>
 
     <!-- 前景圆环，显示进度 -->
     <circle

@@ -27,6 +27,7 @@ export enum Step_State {
   NOT_STARTED = '0',
   DOING = '1',
   COMPLETED = '2',
+  AI_TALK = '3',
 }
 
 export enum PAGE_SYNC {

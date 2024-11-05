@@ -39,8 +39,9 @@ watch(() => props.list, (newValue) => {
 
 <template>
   <div class="fit-content flex items-end justify-between pr-[20px]">
-    <div class="ai-digit-woman h-[400px] w-[300px]" />
-    <div class="message-list flex-1 py-[20px] pl-[300px] pr-[10px]">
+    <!-- <div class="ai-digit-woman h-[400px] w-[300px]" /> -->
+    <Live2d />
+    <div class="message-list flex-1 py-[20px] pr-[10px]">
       <div
         v-for="(item) in props.list"
         :key="item.index"
