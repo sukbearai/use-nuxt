@@ -7,7 +7,7 @@
 <h1 align="center">UseNuxt</h1>
 
 <p align="center">
-Nuxter 👏 新手快速上手体验模板，采用SPA静态化部署，集成QTWebEngine、可视化大屏
+一个快速用于QT Web 前端的基础框架，用Nuxt 3.13.0开发！🫶
 </p>
 
 ## 使用
