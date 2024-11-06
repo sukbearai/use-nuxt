@@ -7,15 +7,15 @@
 <h1 align="center">UseNuxt</h1>
 
 <p align="center">
-一个快速用于QT Web 前端的基础框架，用Nuxt 3.13.0开发！🫶
+一个快速用于 QT Web 前端的基础模板，用 Nuxt 3.13.0 开发！🫶
 </p>
 
 ## 使用
 
 ```bash
 corepack enable
-npx degit sukbearai/use-nuxt use-nuxt
-cd use-nuxt
+npx degit sukbearai/qt-web-ui my-qt-webui
+cd my-qt-webui
 pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
 ```
 
@@ -30,7 +30,7 @@ qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "6483");
 
 ## 部署
 
-配置路径
+配置访问路径
 
 ```ts
 export default defineNuxtConfig({
